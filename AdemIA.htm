@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdemIA - Intelligence Artificielle</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 600px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    resize: none;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00c6ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0096c7;
+}
+
+.response {
+    margin-top: 30px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 80px;
+}
+
+footer {
+    margin-top: 50px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+🤖 AdemIA
+</header>
+
+<div class="container">
+    <textarea id="question" placeholder="Pose ta question à AdemIA..."></textarea>
+    <button onclick="askAI()">Envoyer</button>
+
+    <div class="response" id="response">
+        La réponse de l'IA apparaîtra ici...
+    </div>
+</div>
+
+<footer>
+AdemIA © 2026 - IA éducative avec restrictions légales.  
+Les contenus illégaux, haineux ou dangereux sont automatiquement bloqués.
+</footer>
+
+<script>
+function askAI() {
+    const question = document.getElementById("question").value.toLowerCase();
+    const responseBox = document.getElementById("response");
+
+    // Liste de mots interdits (filtrage basique légal)
+    const bannedWords = ["arme", "drogue", "pirater", "hack", "bombe", "terrorisme", "insulte"];
+
+    for (let word of bannedWords) {
+        if (question.includes(word)) {
+            responseBox.innerHTML = "⚠️ Désolé, cette question enfreint les règles de sécurité d'AdemIA.";
+            return;
+        }
+    }
+
+    // Réponses simulées
+    if (question.includes("bonjour")) {
+        responseBox.innerHTML = "Bonjour 👋 ! Je suis AdemIA. Comment puis-je t'aider ?";
+    } 
+    else if (question.includes("qui es tu")) {
+        responseBox.innerHTML = "Je suis AdemIA, une intelligence artificielle conçue pour répondre aux questions de manière légale et sécurisée.";
+    }
+    else if (question.includes("aide")) {
+        responseBox.innerHTML = "Je peux répondre à des questions éducatives, scientifiques, culturelles et bien plus encore.";
+    }
+    else {
+        responseBox.innerHTML = "Merci pour ta question ! 🤖 (Version démo : connecte une vraie API IA pour des réponses avancées.)";
+    }
+}
+</script>
+
+</body>
+</html>
